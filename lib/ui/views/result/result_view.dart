@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_bmi_app/ui/common/app_colors.dart';
 
 import 'result_viewmodel.dart';
 
 class ResultView extends StackedView<ResultViewModel> {
-  const ResultView({Key? key}) : super(key: key);
+  final double bmi;
+  const ResultView({required this.bmi, Key? key}) : super(key: key);
 
   @override
   Widget builder(
@@ -13,9 +16,35 @@ class ResultView extends StackedView<ResultViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body: Container(
-        padding: const EdgeInsets.only(left: 25.0, right: 25.0),
+      body: Center(
+        child: TweenAnimationBuilder(
+          tween: Tween<double>(begin: 0, end: bmi),
+          duration: Duration(seconds: 2), // Animation duration
+          builder: (context, double value, child) {
+            return Stack(
+              alignment: Alignment.center,
+              children: [
+                SizedBox(
+                  width: 150,
+                  height: 150,
+                  child: CircularProgressIndicator(
+                    value: value / 40, // Assuming max BMI is 40
+                    strokeWidth: 10,
+                    backgroundColor: Colors.grey[300],
+                    valueColor: const AlwaysStoppedAnimation(wTPrimaryColor),
+                  ),
+                ),
+                Text(
+                  value.toStringAsFixed(1),
+                  style: GoogleFonts.poppins(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: wTThemeTextColor),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

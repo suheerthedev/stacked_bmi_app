@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_bmi_app/ui/common/app_colors.dart';
 import 'package:stacked_bmi_app/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
@@ -29,26 +30,20 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 2,
           children: [
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    request.title!,
-                    style: const TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w900),
-                  ),
-                  verticalSpaceTiny,
-                  Text(
-                    request.description!,
-                    style: const TextStyle(fontSize: 14, color: kcMediumGrey),
-                    maxLines: 3,
-                    softWrap: true,
-                  ),
-                ],
-              ),
+            Text(
+              request.title!,
+              style: GoogleFonts.poppins(
+                  fontSize: 16, fontWeight: FontWeight.w900),
+            ),
+            verticalSpaceTiny,
+            Text(
+              request.description!,
+              style: GoogleFonts.poppins(fontSize: 14, color: kcMediumGrey),
+              maxLines: 3,
+              softWrap: true,
             ),
             verticalSpaceMedium,
             GestureDetector(
@@ -63,9 +58,9 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Text(
+                child: Text(
                   'Got it',
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

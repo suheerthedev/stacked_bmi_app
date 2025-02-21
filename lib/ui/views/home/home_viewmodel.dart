@@ -1,10 +1,12 @@
 import 'package:stacked/stacked.dart';
 import 'package:stacked_bmi_app/app/app.dialogs.dart';
 import 'package:stacked_bmi_app/app/app.locator.dart';
+import 'package:stacked_bmi_app/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
   final DialogService dialogService = locator<DialogService>();
+  final NavigationService navigationService = locator<NavigationService>();
 
   double height = 170.0;
   double bmi = 0.0;
@@ -72,6 +74,7 @@ class HomeViewModel extends BaseViewModel {
     } else {
       double heightInMeter = height * 0.01;
       bmi = _weight / (heightInMeter * heightInMeter);
+      navigationService.navigateToResultView(bmi: bmi);
     }
   }
 }
