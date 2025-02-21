@@ -244,7 +244,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        "Height",
+                        "Height (cm)",
                         style: GoogleFonts.poppins(color: wTLightTextColor),
                       ),
                       Text(
