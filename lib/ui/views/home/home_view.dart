@@ -21,7 +21,7 @@ class HomeView extends StackedView<HomeViewModel> {
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            spacing: 20,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               //Heading
               Column(
@@ -122,7 +122,7 @@ class HomeView extends StackedView<HomeViewModel> {
                             Text(
                               "70",
                               style: GoogleFonts.poppins(
-                                  fontSize: 26, fontWeight: FontWeight.bold),
+                                  fontSize: 46, fontWeight: FontWeight.bold),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -180,7 +180,7 @@ class HomeView extends StackedView<HomeViewModel> {
                             Text(
                               "23",
                               style: GoogleFonts.poppins(
-                                  fontSize: 26, fontWeight: FontWeight.bold),
+                                  fontSize: 46, fontWeight: FontWeight.bold),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -221,6 +221,53 @@ class HomeView extends StackedView<HomeViewModel> {
                     ),
                   ),
                 ],
+              ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 1,
+                  height: MediaQuery.of(context).size.width * 0.5,
+                  color: wTSecondaryColor,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        "Height",
+                        style: GoogleFonts.poppins(color: wTLightTextColor),
+                      ),
+                      Text(
+                        viewModel.heightValue.round().toString(),
+                        style: GoogleFonts.poppins(
+                            fontSize: 46, fontWeight: FontWeight.bold),
+                      ),
+                      Slider(
+                        activeColor: wTPrimaryColor,
+                        value: viewModel.heightValue,
+                        max: 200,
+                        min: 0,
+                        inactiveColor: wTSecondaryColor,
+                        secondaryActiveColor: wTPrimaryColor,
+                        divisions: 40,
+                        label: viewModel.heightValue.round().toString(),
+                        onChanged: viewModel.onHeightChanged,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 1,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: wTPrimaryColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5))),
+                  child: Text(
+                    "Let's Go",
+                    style: GoogleFonts.poppins(color: wTSecondaryTextColor),
+                  ),
+                ),
               )
             ],
           ),

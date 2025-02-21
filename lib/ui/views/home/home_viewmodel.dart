@@ -9,6 +9,13 @@ class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
   final _bottomSheetService = locator<BottomSheetService>();
 
+  double heightValue = 170.0;
+
+  onHeightChanged(double value) {
+    heightValue = value;
+    rebuildUi();
+  }
+
   String get counterLabel => 'Counter is: $_counter';
 
   int _counter = 0;
