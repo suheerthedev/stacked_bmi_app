@@ -29,7 +29,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 spacing: 0,
                 children: [
                   Text(
-                    "Welcome",
+                    "Welcome to",
                     style: GoogleFonts.poppins(fontSize: 18),
                   ),
                   Text(
@@ -46,24 +46,30 @@ class HomeView extends StackedView<HomeViewModel> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: viewModel.maleSelection,
                       style: ElevatedButton.styleFrom(
                           side: BorderSide.none,
-                          backgroundColor: wTPrimaryColor,
+                          backgroundColor: viewModel.isMale
+                              ? wTPrimaryColor
+                              : wTSecondaryColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.male,
                             size: 22,
-                            color: wTSecondaryColor,
+                            color: viewModel.isMale
+                                ? wTSecondaryColor
+                                : wTThemeTextColor,
                           ),
                           Text(
                             "Male",
                             style: GoogleFonts.poppins(
-                              color: wTSecondaryColor,
+                              color: viewModel.isMale
+                                  ? wTSecondaryColor
+                                  : wTThemeTextColor,
                             ),
                           ),
                         ],
@@ -73,24 +79,30 @@ class HomeView extends StackedView<HomeViewModel> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.4,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: viewModel.femaleSelection,
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: wTSecondaryColor,
+                          backgroundColor: viewModel.isFemale
+                              ? wTPrimaryColor
+                              : wTSecondaryColor,
                           side: BorderSide.none,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5))),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.female,
                             size: 22,
-                            color: wTPrimaryColor,
+                            color: viewModel.isFemale
+                                ? wTSecondaryColor
+                                : wTThemeTextColor,
                           ),
                           Text(
                             "Female",
                             style: GoogleFonts.poppins(
-                              color: wTPrimaryColor,
+                              color: viewModel.isFemale
+                                  ? wTSecondaryColor
+                                  : wTThemeTextColor,
                             ),
                           ),
                         ],
@@ -120,7 +132,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                   GoogleFonts.poppins(color: wTLightTextColor),
                             ),
                             Text(
-                              "70",
+                              viewModel.weightCounter.toString(),
                               style: GoogleFonts.poppins(
                                   fontSize: 46, fontWeight: FontWeight.bold),
                             ),
@@ -128,7 +140,7 @@ class HomeView extends StackedView<HomeViewModel> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: viewModel.decrementWeightCounter,
                                   style: ButtonStyle(
                                       shape: WidgetStateProperty.all(
                                           RoundedRectangleBorder(
@@ -142,7 +154,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: viewModel.incrementWeightCounter,
                                   style: ButtonStyle(
                                       shape: WidgetStateProperty.all(
                                           RoundedRectangleBorder(
@@ -178,7 +190,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                   GoogleFonts.poppins(color: wTLightTextColor),
                             ),
                             Text(
-                              "23",
+                              viewModel.ageCounter.toString(),
                               style: GoogleFonts.poppins(
                                   fontSize: 46, fontWeight: FontWeight.bold),
                             ),
@@ -186,7 +198,7 @@ class HomeView extends StackedView<HomeViewModel> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: viewModel.decrementAgeCounter,
                                   style: ButtonStyle(
                                       shape: WidgetStateProperty.all(
                                           RoundedRectangleBorder(
@@ -200,7 +212,7 @@ class HomeView extends StackedView<HomeViewModel> {
                                   ),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: viewModel.incrementAgeCounter,
                                   style: ButtonStyle(
                                       shape: WidgetStateProperty.all(
                                           RoundedRectangleBorder(
