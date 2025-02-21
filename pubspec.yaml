@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   google_fonts: ^6.2.1
+  path_provider: ^2.1.5
   stacked: ^3.4.0
   stacked_services: ^1.1.0
 

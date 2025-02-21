@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_bmi_app/ui/common/app_colors.dart';
-import 'package:stacked_bmi_app/ui/common/ui_helpers.dart';
 
 import 'home_viewmodel.dart';
 
@@ -15,17 +15,214 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      backgroundColor: wTBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Welcome"),
-                Text("BMI Calculator"),
-              ],
-            ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 20,
+            children: [
+              //Heading
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 0,
+                children: [
+                  Text(
+                    "Welcome",
+                    style: GoogleFonts.poppins(fontSize: 18),
+                  ),
+                  Text(
+                    "BMI Calculator",
+                    style: GoogleFonts.poppins(
+                        fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
+              //Gender Buttons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          side: BorderSide.none,
+                          backgroundColor: wTPrimaryColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Icon(
+                            Icons.male,
+                            size: 22,
+                            color: wTSecondaryColor,
+                          ),
+                          Text(
+                            "Male",
+                            style: GoogleFonts.poppins(
+                              color: wTSecondaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: wTSecondaryColor,
+                          side: BorderSide.none,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Icon(
+                            Icons.female,
+                            size: 22,
+                            color: wTPrimaryColor,
+                          ),
+                          Text(
+                            "Female",
+                            style: GoogleFonts.poppins(
+                              color: wTPrimaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              //Weight and Age Row
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      child: Container(
+                        color: wTSecondaryColor,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              "Weight",
+                              style:
+                                  GoogleFonts.poppins(color: wTLightTextColor),
+                            ),
+                            Text(
+                              "70",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 26, fontWeight: FontWeight.bold),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                      shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5))),
+                                      backgroundColor: WidgetStateProperty.all(
+                                          wTPrimaryColor)),
+                                  icon: const Icon(
+                                    Icons.remove,
+                                    color: wTSecondaryColor,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                      shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5))),
+                                      backgroundColor: WidgetStateProperty.all(
+                                          wTPrimaryColor)),
+                                  icon: const Icon(
+                                    Icons.add,
+                                    color: wTSecondaryColor,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.3,
+                      child: Container(
+                        color: wTSecondaryColor,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text(
+                              "Age",
+                              style:
+                                  GoogleFonts.poppins(color: wTLightTextColor),
+                            ),
+                            Text(
+                              "23",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 26, fontWeight: FontWeight.bold),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                      shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5))),
+                                      backgroundColor: WidgetStateProperty.all(
+                                          wTPrimaryColor)),
+                                  icon: const Icon(
+                                    Icons.remove,
+                                    color: wTSecondaryColor,
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  style: ButtonStyle(
+                                      shape: WidgetStateProperty.all(
+                                          RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(5))),
+                                      backgroundColor: WidgetStateProperty.all(
+                                          wTPrimaryColor)),
+                                  icon: const Icon(
+                                    Icons.add,
+                                    color: wTSecondaryColor,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
           ),
         ),
       ),
