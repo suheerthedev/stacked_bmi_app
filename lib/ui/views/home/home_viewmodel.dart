@@ -1,13 +1,6 @@
-import 'package:stacked_bmi_app/app/app.bottomsheets.dart';
-import 'package:stacked_bmi_app/app/app.dialogs.dart';
-import 'package:stacked_bmi_app/app/app.locator.dart';
-import 'package:stacked_bmi_app/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final _dialogService = locator<DialogService>();
-  final _bottomSheetService = locator<BottomSheetService>();
 
   double heightValue = 170.0;
 
@@ -16,28 +9,28 @@ class HomeViewModel extends BaseViewModel {
     rebuildUi();
   }
 
-  String get counterLabel => 'Counter is: $_counter';
+  int get ageCounter => _ageCounter;
+  int get weightCounter => _weightCounter;
 
-  int _counter = 0;
+  int _ageCounter = 0;
+  int _weightCounter = 0;
 
-  void incrementCounter() {
-    _counter++;
+  void incrementAgeCounter() {
+    _ageCounter++;
+    rebuildUi();
+  }
+  void decrementAgeCounter() {
+    _ageCounter++;
     rebuildUi();
   }
 
-  void showDialog() {
-    _dialogService.showCustomDialog(
-      variant: DialogType.infoAlert,
-      title: 'Stacked Rocks!',
-      description: 'Give stacked $_counter stars on Github',
-    );
+  void incrementWeightCounter() {
+    _weightCounter++;
+    rebuildUi();
   }
-
-  void showBottomSheet() {
-    _bottomSheetService.showCustomSheet(
-      variant: BottomSheetType.notice,
-      title: ksHomeBottomSheetTitle,
-      description: ksHomeBottomSheetDescription,
-    );
+  
+  void decrementWeightCounter() {
+    _ageCounter++;
+    rebuildUi();
   }
 }
