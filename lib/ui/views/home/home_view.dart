@@ -248,19 +248,19 @@ class HomeView extends StackedView<HomeViewModel> {
                         style: GoogleFonts.poppins(color: wTLightTextColor),
                       ),
                       Text(
-                        viewModel.heightValue.round().toString(),
+                        viewModel.height.round().toString(),
                         style: GoogleFonts.poppins(
                             fontSize: 46, fontWeight: FontWeight.bold),
                       ),
                       Slider(
                         activeColor: wTPrimaryColor,
-                        value: viewModel.heightValue,
+                        value: viewModel.height,
                         max: 200,
                         min: 0,
                         inactiveColor: wTSecondaryColor,
                         secondaryActiveColor: wTPrimaryColor,
                         divisions: 40,
-                        label: viewModel.heightValue.round().toString(),
+                        label: viewModel.height.round().toString(),
                         onChanged: viewModel.onHeightChanged,
                       ),
                     ],
@@ -270,7 +270,7 @@ class HomeView extends StackedView<HomeViewModel> {
               SizedBox(
                 width: MediaQuery.of(context).size.width * 1,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: viewModel.calculateBMI,
                   style: ElevatedButton.styleFrom(
                       backgroundColor: wTPrimaryColor,
                       shape: RoundedRectangleBorder(

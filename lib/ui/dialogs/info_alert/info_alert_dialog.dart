@@ -6,8 +6,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'info_alert_dialog_model.dart';
 
-const double _graphicSize = 60;
-
 class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
   final DialogRequest request;
   final Function(DialogResponse) completer;
@@ -32,46 +30,25 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        request.title!,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w900),
-                      ),
-                      verticalSpaceTiny,
-                      Text(
-                        request.description!,
-                        style:
-                            const TextStyle(fontSize: 14, color: kcMediumGrey),
-                        maxLines: 3,
-                        softWrap: true,
-                      ),
-                    ],
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    request.title!,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.w900),
                   ),
-                ),
-                Container(
-                  width: _graphicSize,
-                  height: _graphicSize,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffF6E7B0),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(_graphicSize / 2),
-                    ),
+                  verticalSpaceTiny,
+                  Text(
+                    request.description!,
+                    style: const TextStyle(fontSize: 14, color: kcMediumGrey),
+                    maxLines: 3,
+                    softWrap: true,
                   ),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    '⭐️',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                )
-              ],
+                ],
+              ),
             ),
             verticalSpaceMedium,
             GestureDetector(
@@ -83,7 +60,7 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                 width: double.infinity,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Colors.red,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Text(
