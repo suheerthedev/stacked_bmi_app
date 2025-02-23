@@ -58,9 +58,12 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i4.ResultView: (data) {
       final args = data.getArgs<ResultViewArguments>(nullOk: false);
-      return _i5.MaterialPageRoute<dynamic>(
-        builder: (context) => _i4.ResultView(bmi: args.bmi, key: args.key),
+      return _i5.PageRouteBuilder<dynamic>(
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            _i4.ResultView(bmi: args.bmi, key: args.key),
         settings: data,
+        transitionsBuilder: data.transition ?? _i1.TransitionsBuilders.slideTop,
+        transitionDuration: const Duration(milliseconds: 1000),
       );
     },
   };

@@ -16,10 +16,25 @@ class ResultView extends StackedView<ResultViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      appBar: AppBar(
+        leadingWidth: 70,
+        leading: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: InkWell(
+              onTap: viewModel.navigationService.back,
+              child: Text(
+                "Back",
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  color: wTPrimaryTextColor,
+                ),
+              )),
+        ),
+      ),
       body: Center(
         child: TweenAnimationBuilder(
           tween: Tween<double>(begin: 0, end: bmi),
-          duration: Duration(seconds: 2), // Animation duration
+          duration: const Duration(seconds: 2), // Animation duration
           builder: (context, double value, child) {
             return Stack(
               alignment: Alignment.center,
@@ -31,7 +46,7 @@ class ResultView extends StackedView<ResultViewModel> {
                     value: value / 40, // Assuming max BMI is 40
                     strokeWidth: 10,
                     backgroundColor: Colors.grey[300],
-                    valueColor: const AlwaysStoppedAnimation(wTPrimaryColor),
+                    valueColor: AlwaysStoppedAnimation(viewModel.bmiColor),
                   ),
                 ),
                 Text(
@@ -39,7 +54,7 @@ class ResultView extends StackedView<ResultViewModel> {
                   style: GoogleFonts.poppins(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: wTThemeTextColor),
+                      color: viewModel.bmiColor),
                 ),
               ],
             );
@@ -54,4 +69,11 @@ class ResultView extends StackedView<ResultViewModel> {
     BuildContext context,
   ) =>
       ResultViewModel();
+
+  @override
+  void onViewModelReady(ResultViewModel viewModel) {
+    // TODO: implement onViewModelReady
+    super.onViewModelReady(viewModel);
+    viewModel.bmiColorSelection();
+  }
 }
