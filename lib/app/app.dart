@@ -15,8 +15,8 @@ import 'package:stacked_bmi_app/services/bmi_service.dart';
     MaterialRoute(page: StartupView),
     CustomRoute(
         page: ResultView,
-        transitionsBuilder: TransitionsBuilders.slideTop,
-        durationInMilliseconds: 2000),
+        transitionsBuilder: TransitionsBuilders.slideBottom,
+        durationInMilliseconds: 1000),
 // @stacked-route
   ],
   dependencies: [
