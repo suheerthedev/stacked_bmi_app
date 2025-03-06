@@ -24,19 +24,34 @@ class HomeView extends StackedView<HomeViewModel> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               //Heading
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 0,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Welcome to",
-                    style: GoogleFonts.poppins(fontSize: 18),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    spacing: 0,
+                    children: [
+                      Text(
+                        "Welcome to",
+                        style: GoogleFonts.poppins(fontSize: 18),
+                      ),
+                      Text(
+                        "BMI Calculator",
+                        style: GoogleFonts.poppins(
+                            fontSize: 28, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "BMI Calculator",
-                    style: GoogleFonts.poppins(
-                        fontSize: 28, fontWeight: FontWeight.bold),
-                  ),
+                  IconButton(
+                    onPressed: viewModel.toggleScreenMode,
+                    icon: Icon(
+                      viewModel.isDark
+                          ? Icons.dark_mode_rounded
+                          : Icons.light_mode_rounded,
+                      color: wTPrimaryTextColor,
+                      size: 36,
+                    ),
+                  )
                 ],
               ),
               //Gender Buttons

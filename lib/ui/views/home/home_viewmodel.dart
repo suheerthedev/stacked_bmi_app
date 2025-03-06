@@ -12,6 +12,8 @@ class HomeViewModel extends BaseViewModel {
 
   double height = 170.0;
 
+  bool isDark = false;
+
   onHeightChanged(double value) {
     height = value;
     rebuildUi();
@@ -82,5 +84,10 @@ class HomeViewModel extends BaseViewModel {
       navigationService.navigateToResultView(bmi: bmi);
       bmiService.updateBmi(bmi);
     }
+  }
+
+  void toggleScreenMode() {
+    isDark = !isDark;
+    rebuildUi();
   }
 }
