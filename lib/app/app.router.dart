@@ -64,7 +64,7 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
         transitionsBuilder:
             data.transition ?? _i1.TransitionsBuilders.slideBottom,
-        transitionDuration: const Duration(milliseconds: 500),
+        transitionDuration: const Duration(milliseconds: 1000),
       );
     },
   };

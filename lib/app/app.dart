@@ -7,6 +7,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_bmi_app/ui/views/result/result_view.dart';
 import 'package:stacked_bmi_app/services/bmi_service.dart';
+import 'package:stacked_bmi_app/services/theme_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -24,6 +25,7 @@ import 'package:stacked_bmi_app/services/bmi_service.dart';
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: BmiService),
+    LazySingleton(classType: ThemeService),
 // @stacked-service
   ],
   bottomsheets: [
