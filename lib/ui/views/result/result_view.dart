@@ -16,49 +16,78 @@ class ResultView extends StackedView<ResultViewModel> {
     Widget? child,
   ) {
     return Scaffold(
+      backgroundColor: wTBackgroundColor,
       appBar: AppBar(
-        leadingWidth: 70,
+        backgroundColor: wTBackgroundColor,
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: InkWell(
-              onTap: viewModel.navigationService.back,
-              child: Text(
-                "Back",
-                style: GoogleFonts.poppins(
-                  fontSize: 12,
-                  color: wTPrimaryTextColor,
-                ),
-              )),
+          child: IconButton(
+              onPressed: viewModel.navigationService.back,
+              icon: const Icon(Icons.arrow_back_ios)),
         ),
       ),
-      body: Center(
-        child: TweenAnimationBuilder(
-          tween: Tween<double>(begin: 0, end: bmi),
-          duration: const Duration(seconds: 2), // Animation duration
-          builder: (context, double value, child) {
-            return Stack(
-              alignment: Alignment.center,
-              children: [
-                SizedBox(
-                  width: 150,
-                  height: 150,
-                  child: CircularProgressIndicator(
-                    value: value / 40, // Assuming max BMI is 40
-                    strokeWidth: 10,
-                    backgroundColor: Colors.grey[300],
-                    valueColor: AlwaysStoppedAnimation(viewModel.bmiColor),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 25.0),
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  TweenAnimationBuilder(
+                    tween: Tween<double>(begin: 0, end: bmi),
+                    duration: const Duration(seconds: 2), // Animation duration
+                    builder: (context, double value, child) {
+                      return Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SizedBox(
+                            width: 200,
+                            height: 200,
+                            child: CircularProgressIndicator(
+                              value: value / 40, // Assuming max BMI is 40
+                              strokeWidth: 10,
+                              backgroundColor: Colors.white38,
+                              valueColor:
+                                  AlwaysStoppedAnimation(viewModel.bmiColor),
+                            ),
+                          ),
+                          Text(
+                            value.toStringAsFixed(1),
+                            style: GoogleFonts.poppins(
+                                fontSize: 52,
+                                fontWeight: FontWeight.bold,
+                                color: viewModel.bmiColor),
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                ),
-                Text(
-                  value.toStringAsFixed(1),
-                  style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: viewModel.bmiColor),
-                ),
-              ],
-            );
-          },
+                  Text(
+                    viewModel.bmiStatus,
+                    style: GoogleFonts.poppins(
+                        fontSize: 28,
+                        fontWeight: FontWeight.normal,
+                        color: viewModel.bmiColor),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.2,
+                    decoration: BoxDecoration(
+                        color: wTSecondaryColor,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Text(
+                        viewModel.bmiDescription,
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w500, fontSize: 16),
+                      ),
+                    ),
+                  )
+                ]),
+          ),
         ),
       ),
     );
@@ -74,6 +103,6 @@ class ResultView extends StackedView<ResultViewModel> {
   void onViewModelReady(ResultViewModel viewModel) {
     // TODO: implement onViewModelReady
     super.onViewModelReady(viewModel);
-    viewModel.bmiColorSelection();
+    viewModel.bmiStringColorSelection();
   }
 }
