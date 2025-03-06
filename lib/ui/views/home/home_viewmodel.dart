@@ -27,14 +27,18 @@ class HomeViewModel extends BaseViewModel {
   bool isFemale = false;
 
   void maleSelection() {
-    isMale = !isMale;
-    isFemale = false;
+    if (isMale == false) {
+      isMale = !isMale;
+      isFemale = false;
+    }
     rebuildUi();
   }
 
   void femaleSelection() {
-    isFemale = !isFemale;
-    isMale = false;
+    if (isFemale == false) {
+      isFemale = !isFemale;
+      isMale = false;
+    }
     rebuildUi();
   }
 
