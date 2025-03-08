@@ -3,12 +3,14 @@ import 'package:stacked_bmi_app/app/app.dialogs.dart';
 import 'package:stacked_bmi_app/app/app.locator.dart';
 import 'package:stacked_bmi_app/app/app.router.dart';
 import 'package:stacked_bmi_app/services/bmi_service.dart';
+import 'package:stacked_bmi_app/services/theme_service.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
   final DialogService dialogService = locator<DialogService>();
   final NavigationService navigationService = locator<NavigationService>();
   final BmiService bmiService = locator<BmiService>();
+  final ThemeService themeService = locator<ThemeService>();
 
   double height = 170.0;
 
@@ -88,6 +90,7 @@ class HomeViewModel extends BaseViewModel {
 
   void toggleScreenMode() {
     isDark = !isDark;
+    themeService.toggleTheme();
     rebuildUi();
   }
 }

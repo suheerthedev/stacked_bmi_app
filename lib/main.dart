@@ -3,6 +3,7 @@ import 'package:stacked_bmi_app/app/app.bottomsheets.dart';
 import 'package:stacked_bmi_app/app/app.dialogs.dart';
 import 'package:stacked_bmi_app/app/app.locator.dart';
 import 'package:stacked_bmi_app/app/app.router.dart';
+import 'package:stacked_bmi_app/ui/common/app_colors.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 Future<void> main() async {
@@ -26,6 +27,12 @@ class MainApp extends StatelessWidget {
       navigatorObservers: [
         StackedService.routeObserver,
       ],
+      theme: ThemeData(
+        brightness:
+            themeService.isDarkMode ? Brightness.dark : Brightness.light,
+        primaryColor: AppColors.primaryColor,
+        scaffoldBackgroundColor: AppColors.background,
+      ),
     );
   }
 }
