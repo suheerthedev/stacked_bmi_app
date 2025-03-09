@@ -25,7 +25,7 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
   ) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.mainColor,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(
@@ -36,12 +36,15 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
             Text(
               request.title!,
               style: GoogleFonts.poppins(
-                  fontSize: 16, fontWeight: FontWeight.w900),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w900,
+                  color: AppColors.mainTextColor),
             ),
             verticalSpaceTiny,
             Text(
               request.description!,
-              style: GoogleFonts.poppins(fontSize: 14, color: kcMediumGrey),
+              style: GoogleFonts.poppins(
+                  fontSize: 14, color: AppColors.lightTextColor),
               maxLines: 3,
               softWrap: true,
             ),
