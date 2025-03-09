@@ -19,12 +19,12 @@ class ResultView extends StackedView<ResultViewModel> {
       backgroundColor: AppColors.background,
       appBar: AppBar(
         backgroundColor: AppColors.background,
-        leading: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: IconButton(
-              onPressed: viewModel.navigationService.back,
-              icon: const Icon(Icons.arrow_back_ios)),
-        ),
+        leading: IconButton(
+            onPressed: viewModel.navigationService.back,
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: AppColors.iconColor,
+            )),
       ),
       body: SafeArea(
         child: Padding(
