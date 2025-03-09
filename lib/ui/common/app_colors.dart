@@ -23,6 +23,9 @@ class AppColors {
   static Color get lightTextColor => themeService.isDarkMode
       ? const Color(0xFF8C8C8C)
       : const Color(0xFF8C8C8C);
+  static Color get iconColor => themeService.isDarkMode
+      ? const Color(0xFFFFFFFF)
+      : const Color(0xFF000000);
 }
 
 const Color wTBackgroundColor = Color(0xFFD1D9E6);

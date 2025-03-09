@@ -14,8 +14,6 @@ class HomeViewModel extends BaseViewModel {
 
   double height = 170.0;
 
-  bool isDark = false;
-
   onHeightChanged(double value) {
     height = value;
     rebuildUi();
@@ -89,7 +87,6 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void toggleScreenMode() {
-    isDark = !isDark;
     themeService.toggleTheme();
     rebuildUi();
   }

@@ -15,7 +15,7 @@ class HomeView extends StackedView<HomeViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: wTBackgroundColor,
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -33,22 +33,25 @@ class HomeView extends StackedView<HomeViewModel> {
                     children: [
                       Text(
                         "Welcome to",
-                        style: GoogleFonts.poppins(fontSize: 18),
+                        style: GoogleFonts.poppins(
+                            fontSize: 18, color: AppColors.mainTextColor),
                       ),
                       Text(
                         "BMI Calculator",
                         style: GoogleFonts.poppins(
-                            fontSize: 28, fontWeight: FontWeight.bold),
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.mainTextColor),
                       ),
                     ],
                   ),
                   IconButton(
                     onPressed: viewModel.toggleScreenMode,
                     icon: Icon(
-                      viewModel.isDark
+                      viewModel.themeService.isDarkMode
                           ? Icons.dark_mode_rounded
                           : Icons.light_mode_rounded,
-                      color: wTPrimaryTextColor,
+                      color: AppColors.iconColor,
                       size: 36,
                     ),
                   )
@@ -137,7 +140,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       width: MediaQuery.of(context).size.width * 0.4,
                       height: MediaQuery.of(context).size.height * 0.3,
                       child: Container(
-                        color: wTSecondaryColor,
+                        color: AppColors.mainColor,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -149,7 +152,9 @@ class HomeView extends StackedView<HomeViewModel> {
                             Text(
                               viewModel.weightCounter.toString(),
                               style: GoogleFonts.poppins(
-                                  fontSize: 46, fontWeight: FontWeight.bold),
+                                  fontSize: 46,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.mainTextColor),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -195,7 +200,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       width: MediaQuery.of(context).size.width * 0.4,
                       height: MediaQuery.of(context).size.height * 0.3,
                       child: Container(
-                        color: wTSecondaryColor,
+                        color: AppColors.mainColor,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -207,7 +212,9 @@ class HomeView extends StackedView<HomeViewModel> {
                             Text(
                               viewModel.ageCounter.toString(),
                               style: GoogleFonts.poppins(
-                                  fontSize: 46, fontWeight: FontWeight.bold),
+                                  fontSize: 46,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.mainTextColor),
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -254,7 +261,7 @@ class HomeView extends StackedView<HomeViewModel> {
                 child: Container(
                   width: MediaQuery.of(context).size.width * 1,
                   height: MediaQuery.of(context).size.width * 0.5,
-                  color: wTSecondaryColor,
+                  color: AppColors.mainColor,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -265,7 +272,9 @@ class HomeView extends StackedView<HomeViewModel> {
                       Text(
                         viewModel.height.round().toString(),
                         style: GoogleFonts.poppins(
-                            fontSize: 46, fontWeight: FontWeight.bold),
+                            fontSize: 46,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.mainTextColor),
                       ),
                       Slider(
                         activeColor: wTPrimaryColor,
