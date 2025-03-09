@@ -16,9 +16,9 @@ class ResultView extends StackedView<ResultViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      backgroundColor: wTBackgroundColor,
+      backgroundColor: AppColors.background,
       appBar: AppBar(
-        backgroundColor: wTBackgroundColor,
+        backgroundColor: AppColors.background,
         leading: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: IconButton(
@@ -48,7 +48,7 @@ class ResultView extends StackedView<ResultViewModel> {
                             child: CircularProgressIndicator(
                               value: value / 40, // Assuming max BMI is 40
                               strokeWidth: 10,
-                              backgroundColor: Colors.white38,
+                              backgroundColor: AppColors.mainColor,
                               valueColor:
                                   AlwaysStoppedAnimation(viewModel.bmiColor),
                             ),
@@ -75,14 +75,16 @@ class ResultView extends StackedView<ResultViewModel> {
                     width: double.infinity,
                     height: MediaQuery.of(context).size.height * 0.2,
                     decoration: BoxDecoration(
-                        color: wTSecondaryColor,
+                        color: AppColors.mainColor,
                         borderRadius: BorderRadius.circular(10)),
                     child: Center(
                       child: Text(
                         viewModel.bmiDescription,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w500, fontSize: 16),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: AppColors.mainTextColor),
                       ),
                     ),
                   )
